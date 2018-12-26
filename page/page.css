@@ -1,0 +1,45 @@
+.mw-pages {
+  background: #eaf6f5;
+  height: 28px;
+  line-height: 28px;
+  border: 1px solid #dbdbdb;
+  border-top: 0;
+  clear: both;
+}
+
+.mw-pages .page-button {
+  padding-left: 10px;
+  float: left;
+}
+.mw-pages .page-number {
+  padding-right: 10px;
+  float: right;
+  text-align: right;
+  color: #969696;
+}
+
+.mw-pages .glyphicon {
+  cursor: pointer;
+  color: #969696;
+}
+.mw-pages .mw-page-prev {
+  -moz-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  transform: scaleX(-1);
+  /*IE*/
+  filter: FlipH;
+}
+
+.mw-pages input {
+  width: 21px;
+  height: 15px;
+  line-height: 15px;
+  padding: 0;
+  border-radius: 0;
+  text-align: center;
+  color: #969696;
+}
+.mw-pages span {
+  color: #969696;
+}

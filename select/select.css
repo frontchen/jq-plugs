@@ -1,0 +1,106 @@
+.mw-select {
+  display: inline-block !important;
+  position: inherit;
+  min-width: 120px;
+}
+
+.mw-select .dropdown-menu {
+  left: inherit;
+  top: inherit;
+  max-height: 200px;
+  overflow: auto;
+}
+
+.mw-select .mw-select-selection {
+  display: block;
+  position: relative;
+  height: 26px;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 2px;
+  border: 1px solid #dcdee2;
+  transition: all 0.2s ease-in-out;
+}
+
+.mw-select .mw-select-disabled {
+  background-color: #f3f3f3;
+  opacity: 1;
+  cursor: not-allowed;
+  color: #ccc;
+}
+
+.mw-select .mw-select-selection div span {
+  display: block;
+  font-size: 12px;
+  height: 24px;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 8px;
+  padding-right: 24px;
+  color: #ccc;
+  text-align: left !important;
+}
+.mw-select .dropdown-item{
+     color: #515a6e;
+}
+.mw-select .mw-select-selection div span.mw-select-selected-value {
+  color: #515a6e;
+}
+
+.mw-select .mw-select-input {
+  display: inline-block;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 24px 0 8px;
+  font-size: 12px;
+  outline: 0;
+  border: none;
+  box-sizing: border-box;
+  color: #515a6e;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.mw-select .mw-select-input[disabled],
+.mw-select .mw-select-disabled .mw-select-selected-value {
+  cursor: not-allowed;
+  color: #ccc;
+}
+
+.mw-select .mw-select-input::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #ccc;
+}
+.mw-select .mw-select-input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc;
+}
+.mw-select .mw-select-input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc;
+}
+.mw-select .mw-select-input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+
+.mw-select .mw-select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  line-height: 1;
+  margin-top: -7px;
+  font-size: 12px;
+  color: #808695;
+  transition: all 0.2s ease-in-out;
+}
+
+.mw-select .glyphicon-remove-sign {
+  display: none;
+}
