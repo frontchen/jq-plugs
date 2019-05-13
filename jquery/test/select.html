@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>下拉框</title>
+    <link
+      href="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="../components/select/select.css" rel="stylesheet" />
+    <style>
+      #main {
+        margin: 20px;
+      }
+      #select1,
+      #select2 {
+        display: inline-block;
+      }
+      #select1 {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main"><span id="select1"></span> <span id="select2"></span></div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script> -->
+    <script src="../units/common.js"></script>
+    <script src="../components/select/select.js"></script>
+    <script type="text/javascript">
+      var select1 = new mwSelect('select1');
+      select1.init({
+        placeholder: '客户名称',
+        multiple: true,
+        filterable: false,
+        labelInValue: false,
+        clearable: true,
+        disabled: false
+      });
+
+      // select.disable = false;
+      // console.log(['value', select.value]);
+      // console.log(['value', select.value]);
+
+      select1.on('on-change', function(val) {
+        console.log(val);
+      });
+      select1.on('on-input-change', function(query) {
+        console.log(query);
+      });
+      select1.on('on-clear', function(query) {
+        console.log(['on-clear', query]);
+      });
+      select1.on('on-scroll', function() {
+        console.log('on-scroll');
+      });
+
+      var params = {
+        url: 'http://cache.video.iqiyi.com/jp/avlist/202861101/1/',
+        data: {}
+      };
+      mwUnits.getData(params).then(
+        function(res) {
+          if (res) {
+            var list = res.data.vlist;
+            $.each(list, function(i, v) {
+              v.label = v.vn;
+              v.value = v.vid;
+            });
+            select1.renderSelect(list);
+
+            select1.value = [
+              'c183093e2c60e7a34eb6758c3f997a1e',
+              '651921e50fb59b8c26935907bad0f6ae'
+            ];
+          }
+        },
+        function(err) {
+          console.log(['err', err]);
+        }
+      );
+
+      var select2 = new mwSelect('select2');
+      select2.init({
+        placeholder: '剧集名称',
+        multiple: false,
+        filterable: false,
+        labelInValue: false,
+        clearable: true,
+        disabled: false
+      });
+      select2.on('on-change', function(val) {
+        console.log(val);
+      });
+      select2.on('on-input-change', function(query) {
+        console.log(query);
+      });
+      select2.on('on-clear', function(query) {
+        console.log(['on-clear', query]);
+      });
+      select2.on('on-scroll', function() {
+        console.log('on-scroll');
+      });
+      mwUnits.getData(params).then(
+        function(res) {
+          if (res) {
+            var list = res.data.vlist;
+            $.each(list, function(i, v) {
+              v.label = v.vn;
+              v.value = v.vid;
+            });
+            select2.renderSelect(list);
+          }
+        },
+        function(err) {
+          console.log(['err', err]);
+        }
+      );
+    </script>
+  </body>
+</html>

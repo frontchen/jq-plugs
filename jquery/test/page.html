@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>分页</title>
+    <link
+      href="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="../components/page/page.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="main"></div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script> -->
+    <script src="../units/common.js"></script>
+    <script src="../components/page/page.js"></script>
+    <script type="text/javascript">
+      var page = new mwPage('main');
+      page.init({
+        pageIndex: 1,
+        pageSize: 20,
+        pageTotal: 5,
+        pageNumber: 100
+      });
+      page.on('changePage', function(page) {
+        console.log(['page', page]);
+      });
+    </script>
+  </body>
+</html>

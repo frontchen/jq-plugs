@@ -1,0 +1,112 @@
+.mw-table-wrapper {
+  position: relative;
+  border-bottom: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.mw-table-wrapper .mw-table {
+  width: inherit;
+  height: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  color: #515a6e;
+  font-size: 12px;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+.mw-table .mw-table-cell {
+  padding-left: 15px;
+  padding-right: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  box-sizing: border-box;
+}
+
+.mw-table .mw-table-header .mw-table-cell {
+  padding-left: 16px;
+}
+
+.mw-table table {
+  table-layout: fixed;
+  display: table;
+  border-collapse: separate;
+  border-color: grey;
+  border-spacing: 0px;
+  width: 100%;
+}
+
+.mw-table thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  box-sizing: border-box;
+}
+
+.mw-table tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+.mw-table tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+
+.mw-table th {
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  font-weight: bold;
+  border-bottom: 1px solid #e8eaec;
+  color: #ffffff;
+  background-color: #00bdab;
+  display: table-cell;
+}
+
+.mw-table td {
+  min-height: 50px;
+  height: 50px;
+  text-align: center;
+  box-sizing: border-box;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  border-bottom: 1px solid #e8eaec;
+  background-color: #ffffff;
+  display: table-cell;
+}
+.mw-table tr:last-child td {
+  border-bottom: none;
+}
+
+.mw-table th .mw-table-cell {
+  display: inline-block;
+  word-wrap: normal;
+  vertical-align: middle;
+  width: 100%;
+}
+
+.mw-table .mw-table-header {
+  overflow: hidden;
+}
+
+.mw-table .mw-table-body {
+  border: 1px solid #dcdee2;
+  border-top: 0px;
+  min-height: 400px;
+}
+.mw-table .mw-table-body .mw-table-row:hover td {
+  background-color: #eaf6f5;
+}
+.mw-table .mw-table-body .mw-table-row:active {
+  background: #e5e5e5;
+}

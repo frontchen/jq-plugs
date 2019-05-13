@@ -1,0 +1,184 @@
+.mw-cascader .mw-cascader-selection {
+  display: inline-block;
+  position: relative;
+  height: 26px;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+  background-color: #ffffff;
+  border-radius: 2px;
+  border: 1px solid #dcdee2;
+  transition: all 0.2s ease-in-out;
+}
+
+.mw-cascader .mw-cascader-disabled {
+  background-color: #f3f3f3;
+  opacity: 1;
+  cursor: not-allowed;
+  color: #ccc;
+}
+
+.mw-cascader .mw-cascader-selection div span {
+  display: block;
+  font-size: 12px;
+  height: 24px;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 8px;
+  padding-right: 24px;
+  color: #ccc;
+  text-align: left !important;
+}
+
+.mw-cascader .mw-cascader-selection div span.mw-cascader-selected-value {
+  color: #515a6e;
+}
+
+.mw-cascader .mw-cascader-input {
+  display: inline-block;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  padding: 0 24px 0 8px;
+  font-size: 12px;
+  outline: 0;
+  border: none;
+  box-sizing: border-box;
+  color: #515a6e;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+.mw-cascader .mw-cascader-input[disabled],
+.mw-cascader .mw-cascader-disabled .mw-cascader-selected-value {
+  cursor: not-allowed;
+  color: #ccc;
+}
+
+.mw-cascader .mw-cascader-input::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #ccc;
+}
+.mw-cascader .mw-cascader-input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc;
+}
+.mw-cascader .mw-cascader-input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc;
+}
+.mw-cascader .mw-cascader-input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #ccc;
+}
+
+.mw-cascader .mw-cascader-arrow {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  line-height: 1;
+  margin-top: -7px;
+  font-size: 12px;
+  color: #808695;
+  transition: all 0.2s ease-in-out;
+}
+
+.mw-cascader .glyphicon-remove-sign {
+  display: none;
+}
+
+.mw-cascader .loop {
+  animation: ani-load-loop 1s linear infinite;
+}
+
+@keyframes ani-load-loop {
+  from {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* new style */
+.mw-cascader {
+  position: relative;
+  width: 200px;
+  line-height: normal;
+}
+.mw-cascader .dropdown-menu {
+  width: auto;
+  padding: 0;
+  white-space: nowrap;
+  overflow: visible;
+  position: absolute;
+  will-change: top, left;
+  transform-origin: center top 0px;
+  top: 28px;
+  left: 0px;
+  max-height: 200px;
+  /* 下列为覆盖样式部分 */
+  margin: 5px 0px;
+  float: inherit;
+  min-width: inherit;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.2);
+  border: none;
+}
+.mw-cascader .mw-cascader-menu {
+  display: inline-block;
+  min-width: 100px;
+  height: 180px;
+  margin: 0;
+  padding: 5px 0 !important;
+  vertical-align: top;
+  list-style: none;
+  border-right: 1px solid #e8eaec;
+  overflow: auto;
+}
+.mw-cascader .mw-cascader-menu:last-child {
+  border-right-color: transparent;
+  margin-right: -1px;
+}
+.mw-cascader .mw-cascader-menu-item {
+  margin: 0;
+  line-height: normal;
+  padding: 7px 16px;
+  clear: both;
+  color: #515a6e;
+  font-size: 12px !important;
+  white-space: nowrap;
+  list-style: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  /* 控制右侧图标 */
+  padding-right: 24px;
+  position: relative;
+}
+.mw-cascader .mw-cascader-menu-item:hover {
+  background-color: #f3f3f3;
+}
+.mw-cascader .mw-cascader-menu-item-active {
+  background-color: #f3f3f3;
+  color: #2d8cf0;
+}
+.mw-cascader .mw-cascader-menu-item-disabled {
+  color: #c5c8ce;
+  cursor: not-allowed;
+}
+.mw-cascader .glyphicon {
+  font-size: 12px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  margin-top: -6px;
+  margin-left: 10px;
+}
+.mw-cascader .glyphicon-repeat {
+  animation: ani-load-loop 1s linear infinite;
+}

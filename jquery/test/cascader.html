@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>级联选择</title>
+    <link
+      href="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="../components/cascader/cascader.css" rel="stylesheet" />
+    <style>
+      #main {
+        margin: 20px;
+      }
+      #cas1,
+      #cas2 {
+        display: inline-block;
+      }
+      #cas1 {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main"><span id="cas1"></span> <span id="cas2"></span></div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script> -->
+    <script src="../units/common.js"></script>
+    <script src="../components/cascader/cascader.js"></script>
+    <script type="text/javascript">
+      function getCascaderData(depth) {
+        // 三级
+        var cas3 = [];
+        for (var i = 1; i <= 10; i++) {
+          cas3.push({
+            _label: '测试3-' + i,
+            _value: i,
+            _id: i,
+            _depth: 3,
+            _pid: 1,
+            _count: 0
+          });
+        }
+        // 二级
+        var cas2 = [];
+        for (var j = 1; j <= 10; j++) {
+          cas2.push({
+            _label: '测试2-' + j,
+            _value: j,
+            _id: j,
+            _depth: 2,
+            _pid: 2,
+            _count: 0
+          });
+          if (j === 1) {
+            cas2[j - 1]._count = 1;
+            cas2[j - 1]._children = cas3;
+          }
+        }
+        // 一级
+        var cas1 = [];
+        for (var k = 1; k <= 10; k++) {
+          cas1.push({
+            _label: '测试1-' + k,
+            _value: k,
+            _id: k,
+            _depth: 1,
+            _pid: 0,
+            _count: 0,
+            _disabled: false
+          });
+          if (k === 2) {
+            if (depth) {
+              cas1[k - 1]._count = 1;
+            } else {
+              cas1[k - 1]._children = cas2;
+            }
+          }
+          if (k === 3) {
+            cas1[k - 1]._disabled = true;
+          }
+        }
+        if (!depth || depth === 1) {
+          return cas1;
+        }
+        if (depth === 2) {
+          return cas2;
+        }
+        if (depth === 3) {
+          return cas3;
+        }
+      }
+
+      function getCascader(depth, cb) {
+        setTimeout(function() {
+          var list = getCascaderData(depth);
+          cb && cb(list);
+        }, 1000);
+      }
+
+      // 非级联数据测试
+      var cascader = new mwCascader('cas1');
+      cascader.init({
+        placeholder: '品名',
+        trigger: 'hover',
+        changeOnSelect: false,
+        clearable: true
+      });
+      cascader.on('on-change', function(val) {
+        console.log(['on-change', val]);
+      });
+      cascader.on('on-clear', function(val) {
+        console.log(['on-clear', val]);
+      });
+      cascader.on('on-disable-child', function(val) {
+        console.log(['on-disable-child', val]);
+        getCascader(val._depth + 1, function(data) {
+          console.log([val, data]);
+          cascader.renderChildList(val, data);
+        });
+      });
+      cascader.on('on-scroll', function(item) {
+        console.log(['on-scroll', item.depth, item.element]);
+        getCascader(item.depth, function(data) {
+          cascader.renderList(item.element, data);
+        });
+      });
+      getCascader(1, function(data) {
+        cascader.renderCascader(data);
+      });
+
+      // 级联数据测试
+      var data = getCascaderData();
+      var cascader2 = new mwCascader('cas2');
+      cascader2.init({
+        placeholder: '品名',
+        trigger: 'hover',
+        changeOnSelect: false,
+        isCascader: true,
+        disabled: true,
+        clearable: true
+      });
+      cascader2.on('on-change', function(val) {
+        console.log(['on-change', val]);
+      });
+      cascader2.on('on-clear', function(val) {
+        console.log(['on-clear', val]);
+      });
+      cascader2.on('on-disable-child', function(val) {
+        console.log(['on-disable-child', val]);
+      });
+      cascader2.on('on-scroll', function(val) {
+        console.log(['on-scroll', val]);
+      });
+      cascader2.renderCascader(data);
+
+      // 动态改变启用、禁用状态
+      cascader2.disable = false;
+      // 设置默认值
+      cascader2.value = [
+        {
+          _count: 0,
+          _depth: 1,
+          _disabled: false,
+          _id: 2,
+          _label: '测试1-2',
+          _pid: 0,
+          _value: 2
+        },
+        {
+          _count: 0,
+          _depth: 2,
+          _disabled: false,
+          _id: 3,
+          _label: '测试2-3',
+          _pid: 2,
+          _value: 3
+        }
+      ];
+    </script>
+  </body>
+</html>

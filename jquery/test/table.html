@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>表格</title>
+    <link
+      href="https://cdn.bootcss.com/twitter-bootstrap/3.4.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="../components/table/table.css" rel="stylesheet" />
+    <style>
+      #main {
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main"></div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.0.0/jquery.min.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script> -->
+    <script src="../units/common.js"></script>
+    <script src="../components/table/table.js"></script>
+    <script type="text/javascript">
+      var table = new mwTable('main');
+      var columns = [
+        {
+          title: 'vid',
+          width: '120',
+          key: 'vid'
+        },
+        { title: '标题', key: 'vn' },
+        {
+          title: '预览图',
+          render: function(params) {
+            return (
+              '<img src="' +
+              params.row.vpic +
+              '" style="width:50px;height:50px;margin:10px" />'
+            );
+          }
+        },
+        { title: '描述', key: 'vt' },
+        { title: '播放地址', key: 'vurl' }
+      ];
+      table.init(columns);
+
+      var params = {
+        url: 'http://cache.video.iqiyi.com/jp/avlist/202861101/1/',
+        data: {}
+      };
+      mwUnits.getData(params).then(
+        function(res) {
+          if (res) {
+            var list = res.data.vlist;
+            table.renderTable(list);
+          }
+        },
+        function(err) {
+          console.log(['err', err]);
+        }
+      );
+    </script>
+  </body>
+</html>
